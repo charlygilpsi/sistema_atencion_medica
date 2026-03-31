@@ -1,12 +1,12 @@
 import uuid
 
 class Incidence:
-    def __init__(self, employee_code: int, description: str, priority: int) -> None:
+    def __init__(self, employee_code: int, employee_description: str, priority: int) -> None:
         self._employee_code = employee_code
-        self._description = description
+        self._employee_description = employee_description
         self._priority = priority
         self._id_incidence = uuid.uuid4()
-        # uuid.UUID
+        self._technician_description = None
         
     
     @property
@@ -20,13 +20,23 @@ class Incidence:
         
     
     @property
-    def description(self) -> str:
-        return self.description
+    def employee_description(self) -> str:
+        return self._employee_description
     
     
-    @description.setter
-    def description(self, description: str) -> None:
-        self._description = description
+    @employee_description.setter
+    def employee_description(self, employee_description: str) -> None:
+        self._employee_description = employee_description
+    
+    
+    @property
+    def technician_description(self) -> str:
+        return self._technician_description
+    
+    
+    @technician_description.setter
+    def technician_description(self, technician_description: str) -> None:
+        self._technician_description = technician_description
     
     
     @property
