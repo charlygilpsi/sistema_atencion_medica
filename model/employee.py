@@ -1,5 +1,5 @@
 class Employee:
-    def __init__(self, id_employee: int, employee_code: int):
+    def __init__(self, id_employee: int, employee_code: int) -> None:
         self._id_employee = id_employee
         self._employee_code = employee_code
         
