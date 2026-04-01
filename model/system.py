@@ -77,20 +77,16 @@ class System:
         return max_id + 1
     
     
-    def create_incidence(self, employee_code: int, equipment: Equipment, employee_description: str, priority: int) -> Incidence:
+    def create_incidence(self, employee_code: int, equipment: Equipment, employee_description: str, priority: int) -> None:
         id = self.auto_increment_id(self.incidences)
         incidence = Incidence(id, employee_code, equipment, employee_description, priority)
         self._incidences.append(incidence)
-        
-        return incidence
     
     
-    def create_ticket(self, incidence: Incidence, technician: Technician | None) -> Ticket:
+    def create_ticket(self, incidence: Incidence, technician: Technician | None) -> None:
         id = self.auto_increment_id(self.tickets)
         ticket = Ticket(id, incidence, technician)
         self._tickets.append(ticket)
-        
-        return ticket
     
     
     def check_for_an_available_technician(self) -> Technician | None:
