@@ -1,8 +1,10 @@
+from model.equipment import Equipment
 import uuid
 
 class Incidence:
-    def __init__(self, employee_code: int, employee_description: str, priority: int) -> None:
+    def __init__(self, employee_code: int, equipment: Equipment, employee_description: str, priority: int) -> None:
         self._employee_code = employee_code
+        self._equipment = equipment
         self._employee_description = employee_description
         self._priority = priority
         self._id_incidence = uuid.uuid4()
@@ -18,6 +20,16 @@ class Incidence:
     def employee_code(self, employee_code: int) -> None:
         self._employee_code = employee_code
         
+    
+    @property
+    def equipment(self) -> Equipment:
+        return self._equipment
+    
+    
+    @equipment.setter
+    def equipment(self, equipment: Equipment) -> None:
+        self._equipment = equipment
+    
     
     @property
     def employee_description(self) -> str:
