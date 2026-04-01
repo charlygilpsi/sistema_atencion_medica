@@ -75,3 +75,19 @@ class System:
                 max_id = item.id
                 
         return max_id + 1
+    
+    
+    def create_incidence(self, employee_code: int, equipment: Equipment, employee_description: str, priority: int) -> Incidence:
+        id = self.auto_increment_id(self.incidences)
+        incidence = Incidence(id, employee_code, equipment, employee_description, priority)
+        self._incidences.append(incidence)
+        
+        return incidence
+    
+    
+    def create_ticket(self, incidence: Incidence, technician: Technician) -> Ticket:
+        id = self.auto_increment_id(self.tickets)
+        ticket = Ticket(id, incidence, technician)
+        self._tickets.append(ticket)
+        
+        return ticket
