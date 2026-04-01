@@ -1,4 +1,5 @@
-from model.ticket import Ticket
+from model.ticket import Ticket, TicketStatus
+from model.incidence import Incidence
 from model.employee import Employee
 
 class Technician(Employee):
@@ -36,3 +37,12 @@ class Technician(Employee):
     
     def update_ticket_status(self, status: str) -> None:
         self.ticket_linked.status = status
+        
+    
+    def set_incidence_technician_description(self, description: str, incidence: Incidence) -> None:
+        incidence.technician_description = description
+        
+    
+    def close_ticket(self, ticket: Ticket) -> None:
+        ticket.status = TicketStatus.CLOSED
+        self.available = True

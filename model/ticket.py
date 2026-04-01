@@ -9,7 +9,7 @@ class TicketStatus(Enum):
 
 
 class Ticket:
-    def __init__(self, id: int, incidence: Incidence, technician: Technician, status: TicketStatus = TicketStatus.PENDING) -> None:
+    def __init__(self, id: int, incidence: Incidence, technician: Technician | None, status: TicketStatus = TicketStatus.PENDING) -> None:
         self._id_ticket = id
         self._incidence = incidence
         self._technician = technician
