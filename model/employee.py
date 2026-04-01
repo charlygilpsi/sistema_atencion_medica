@@ -1,12 +1,23 @@
 class Employee:
-    def __init__(self, id_employee: int, employee_code: int) -> None:
+    def __init__(self, id_employee: int, employee_name: str, employee_code: int) -> None:
         self._id_employee = id_employee
+        self._employee_name = employee_name
         self._employee_code = employee_code
         
         
     @property
     def id_employee(self) -> int:
         return self._id_employee
+    
+    
+    @property
+    def employee_name(self) -> str:
+        return self._employee_name
+    
+    
+    @employee_name.setter
+    def employee_name(self, employee_name: str) -> None:
+        self._employee_name = employee_name
     
     
     @property
