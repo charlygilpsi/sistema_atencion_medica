@@ -85,7 +85,7 @@ class System:
         return incidence
     
     
-    def create_ticket(self, incidence: Incidence, technician: Technician) -> Ticket:
+    def create_ticket(self, incidence: Incidence, technician: Technician | None) -> Ticket:
         id = self.auto_increment_id(self.tickets)
         ticket = Ticket(id, incidence, technician)
         self._tickets.append(ticket)

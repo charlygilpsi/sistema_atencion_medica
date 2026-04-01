@@ -4,16 +4,16 @@ from enum import Enum
 
 class TicketStatus(Enum):
     PENDING = "Pendiente"
-    IN_PROCESS = "En proceso"
+    IN_PROGRESS = "En proceso"
     CLOSED = "Cerrado"
 
 
 class Ticket:
-    def __init__(self, id: int, incidence: Incidence, technician: Technician | None, status: TicketStatus = TicketStatus.PENDING) -> None:
+    def __init__(self, id: int, incidence: Incidence, technician: Technician | None) -> None:
         self._id_ticket = id
         self._incidence = incidence
         self._technician = technician
-        self._status = status
+        self._status = self.set_status_depending_on_technician()
     
     
     @property
@@ -49,3 +49,10 @@ class Ticket:
     @status.setter
     def status(self, status: TicketStatus) -> None:
         self._status = status
+        
+    
+    def set_status_depending_on_technician(self) -> TicketStatus:
+        if self.technician:
+            return TicketStatus.IN_PROGRESS
+        else:
+            return TicketStatus.PENDING
