@@ -91,3 +91,13 @@ class System:
         self._tickets.append(ticket)
         
         return ticket
+    
+    
+    def check_for_an_available_technician(self) -> Technician | None:
+        for technician in self.technicians:
+            if technician.available:
+                technician.available = False
+                
+                return technician
+            
+        return None
