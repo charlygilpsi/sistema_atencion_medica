@@ -2,9 +2,9 @@ from model.equipment import Equipment
 from enum import Enum
 
 class Priority(Enum):
-    ALTA = 1
+    ALTA = 3
     MEDIA = 2
-    BAJA = 3
+    BAJA = 1
 
 
 class Incidence:
