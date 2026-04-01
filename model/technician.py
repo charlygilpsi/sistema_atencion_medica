@@ -35,10 +35,6 @@ class Technician(Employee):
         self._ticket_linked = ticket_linked
         
     
-    def update_ticket_status(self, status: str) -> None:
-        self.ticket_linked.status = status
-        
-    
     def set_incidence_technician_description(self, description: str, incidence: Incidence) -> None:
         incidence.technician_description = description
         
