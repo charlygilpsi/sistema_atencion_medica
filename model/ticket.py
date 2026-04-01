@@ -1,6 +1,9 @@
 from model.incidence import Incidence
-from model.technician import Technician
 from enum import Enum
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from model.technician import Technician
 
 class TicketStatus(Enum):
     PENDING = "Pendiente"
@@ -9,8 +12,8 @@ class TicketStatus(Enum):
 
 
 class Ticket:
-    def __init__(self, id: int, incidence: Incidence, technician: Technician | None) -> None:
-        self._id_ticket = id
+    def __init__(self, id: int, incidence: Incidence, technician: "Technician | None") -> None:
+        self._id = id
         self._incidence = incidence
         self._technician = technician
         self._status = self.set_status_depending_on_technician()
@@ -32,17 +35,17 @@ class Ticket:
         
     
     @property
-    def technician(self) -> Technician:
+    def technician(self) -> "Technician":
         return self._technician
     
     
     @technician.setter
-    def technician(self, technician: Technician) -> None:
+    def technician(self, technician: "Technician") -> None:
         self._technician = technician
         
     
     @property
-    def status(self) -> str:
+    def status(self) -> TicketStatus:
         return self._status
     
     

@@ -1,9 +1,13 @@
-from model.ticket import Ticket, TicketStatus
+from model.ticket import TicketStatus
 from model.incidence import Incidence
 from model.employee import Employee
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from model.ticket import Ticket
 
 class Technician(Employee):
-    def __init__(self, id_employee: int, employee_name: str, employee_code: int, id_technician: int, available: bool = True, ticket_linked: Ticket = None) -> None:
+    def __init__(self, id_employee: int, employee_name: str, employee_code: int, id_technician: int, available: bool = True, ticket_linked: "Ticket" = None) -> None:
         super().__init__(id_employee, employee_name, employee_code)
         self._id_technician = id_technician
         self._available = available
@@ -31,7 +35,7 @@ class Technician(Employee):
     
     
     @ticket_linked.setter
-    def ticket_linked(self, ticket_linked) -> None:
+    def ticket_linked(self, ticket_linked: "Ticket") -> None:
         self._ticket_linked = ticket_linked
         
     
@@ -39,6 +43,6 @@ class Technician(Employee):
         incidence.technician_description = description
         
     
-    def close_ticket(self, ticket: Ticket) -> None:
+    def close_ticket(self, ticket: "Ticket") -> None:
         ticket.status = TicketStatus.CLOSED
         self.available = True
