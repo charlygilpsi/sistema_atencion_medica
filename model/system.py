@@ -1,7 +1,3 @@
-# TODO class System
-# TODO attributes: inventary: list[Equipment], employees: list[Employee], technicians: list[Technicians], incidences: list[Incidence], tickets: list[Ticket]
-# TODO methods: check_technicians_availability(), create_ticket()
-
 from model.equipment import Equipment
 from model.employee import Employee
 from model.incidence import Incidence

@@ -1,7 +1,14 @@
 from model.equipment import Equipment
+from enum import Enum
+
+class Priority(Enum):
+    ALTA = 1
+    MEDIA = 2
+    BAJA = 3
+
 
 class Incidence:
-    def __init__(self, id: int, employee_code: int, equipment: Equipment, employee_description: str, priority: int) -> None:
+    def __init__(self, id: int, employee_code: int, equipment: Equipment, employee_description: str, priority: Priority) -> None:
         self._id = id
         self._employee_code = employee_code
         self._equipment = equipment
@@ -56,10 +63,10 @@ class Incidence:
     
     
     @property
-    def priority(self) -> int:
+    def priority(self) -> Priority:
         return self._priority
         
     
     @property
-    def priority(self, priority) -> None:
+    def priority(self, priority: Priority) -> None:
         self._priority = priority
