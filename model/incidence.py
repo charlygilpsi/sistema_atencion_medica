@@ -1,5 +1,4 @@
 from model.equipment import Equipment
-import uuid
 
 class Incidence:
     def __init__(self, id: int, employee_code: int, equipment: Equipment, employee_description: str, priority: int) -> None:
