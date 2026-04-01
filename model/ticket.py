@@ -1,9 +1,16 @@
 from model.incidence import Incidence
 from model.technician import Technician
+from enum import Enum
 import uuid
 
+class TicketStatus(Enum):
+    PENDING = "Pendiente"
+    IN_PROCESS = "En proceso"
+    CLOSED = "Cerrado"
+
+
 class Ticket:
-    def __init__(self, incidence: Incidence, technician: Technician, status: str = "Pendiente") -> None:
+    def __init__(self, incidence: Incidence, technician: Technician, status: TicketStatus = TicketStatus.PENDING) -> None:
         self._incidence = incidence
         self._technician = technician
         self._status = status
@@ -36,5 +43,5 @@ class Ticket:
     
     
     @status.setter
-    def status(self, status: str) -> None:
+    def status(self, status: TicketStatus) -> None:
         self._status = status
