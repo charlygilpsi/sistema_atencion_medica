@@ -1,3 +1,5 @@
+from model.equipment import Equipment
+
 class Employee:
     def __init__(self, id_employee: int, employee_name: str, employee_code: int) -> None:
         self._id_employee = id_employee
@@ -30,5 +32,5 @@ class Employee:
         self._employee_code = employee_code
 
     
-    def report_incidence(self, description: str, priority: int) -> tuple[str, int, int]:
-        return [description, priority, self.employee_code]
+    def report_incidence(self, equipment: Equipment, description: str, priority: int) -> tuple[str, Equipment, int, int]:
+        return [self.employee_code, equipment, description, priority]
