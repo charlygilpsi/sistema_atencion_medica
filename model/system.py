@@ -65,3 +65,13 @@ class System:
     @tickets.setter
     def tickets(self, tickets: list[Ticket]) -> None:
         self._tickets = tickets
+        
+    
+    def auto_increment_id(self, items: list) -> int:
+        max_id = 0
+        
+        for item in items:
+            if item.id > max_id:
+                max_id = item.id
+                
+        return max_id + 1

@@ -10,6 +10,6 @@ class EquipmentType(Enum):
 
 
 class Equipment:
-    def __init__(self, id_equipment: int, type: EquipmentType) -> None:
-        self._id_equipment = id_equipment
+    def __init__(self, id: int, type: EquipmentType) -> None:
+        self._id = id
         self._type = type

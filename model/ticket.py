@@ -1,7 +1,6 @@
 from model.incidence import Incidence
 from model.technician import Technician
 from enum import Enum
-import uuid
 
 class TicketStatus(Enum):
     PENDING = "Pendiente"
@@ -10,12 +9,17 @@ class TicketStatus(Enum):
 
 
 class Ticket:
-    def __init__(self, incidence: Incidence, technician: Technician, status: TicketStatus = TicketStatus.PENDING) -> None:
+    def __init__(self, id: int, incidence: Incidence, technician: Technician, status: TicketStatus = TicketStatus.PENDING) -> None:
+        self._id_ticket = id
         self._incidence = incidence
         self._technician = technician
         self._status = status
-        self._id_incidence = uuid.uuid4()
-        
+    
+    
+    @property
+    def id(self) -> int:
+        return self._id
+    
     
     @property
     def incidence(self) -> Incidence:

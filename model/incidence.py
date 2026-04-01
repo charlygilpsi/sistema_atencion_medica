@@ -2,14 +2,19 @@ from model.equipment import Equipment
 import uuid
 
 class Incidence:
-    def __init__(self, employee_code: int, equipment: Equipment, employee_description: str, priority: int) -> None:
+    def __init__(self, id: int, employee_code: int, equipment: Equipment, employee_description: str, priority: int) -> None:
+        self._id = id
         self._employee_code = employee_code
         self._equipment = equipment
         self._employee_description = employee_description
         self._priority = priority
-        self._id_incidence = uuid.uuid4()
         self._technician_description = None
         
+    
+    @property
+    def id(self) -> int:
+        return self._id
+    
     
     @property
     def employee_code(self) -> int:
